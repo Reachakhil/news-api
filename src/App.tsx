@@ -23,8 +23,8 @@ const style = {
   p: 4,
 };
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
-  width:'20%',
-  borderRadius:'20px',
+  width: '20%',
+  borderRadius: '20px',
   color: theme.palette.getContrastText(grey[900]),
   backgroundColor: grey[900],
   '&:hover': {
@@ -34,55 +34,55 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
 
 function App() {
   const API_KEY = 'a5cf886a8dd84801a01c8b5bd0da1b0d';
-  const [tabs,setTabs] = useState([{
-name:'Tech Crunch',
-link:`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${API_KEY}`
-  },{
-name:'Business',
-link:`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=${API_KEY}`
-  },{
-    name:'Wall Street Journal',
-    link:`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${API_KEY}`
+  const [tabs, setTabs] = useState([{
+    name: 'Tech Crunch',
+    link: `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${API_KEY}`
+  }, {
+    name: 'Business',
+    link: `https://newsapi.org/v2/everything?domains=wsj.com&apiKey=${API_KEY}`
+  }, {
+    name: 'Wall Street Journal',
+    link: `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${API_KEY}`
   }])
-  const [selected,setSelected] = useState(tabs[0])
-  const [currentPageArticle,setCurrentPageArticle] = useState([])
+  const [selected, setSelected] = useState(tabs[0])
+  const [currentPageArticle, setCurrentPageArticle] = useState([])
   const [open, setOpen] = React.useState(false);
-  const [catName,setCatName] = useState('')
-  const [apiName,setApiName] = useState('')
+  const [catName, setCatName] = useState('')
+  const [apiName, setApiName] = useState('')
 
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-useEffect(()=>{
-  callData(tabs[0])
-},[tabs])
+  useEffect(() => {
+    callData(tabs[0])
+  }, [tabs])
 
-const onSelect=(tabVal:any)=>{
-  setSelected(tabVal)
-  callData(tabVal)
-}
-const callData = async(tab:any)=>{
-  let response = await fetch(tab.link);
-  if (response.status === 200) {
-    let data = await response.json();
-    setCurrentPageArticle(data.articles)
-}
-}
-const selectTab=()=>{
-if(tabs.length===5 || catName==='' || apiName===''){
-  handleClose()
-}else{
-  setTabs((tab)=>{
-    const link = apiName.replace('API_KEY',`${API_KEY}`)
-    return [...tab,{name:catName,link:link}]
-  })
-  setCatName('')
-  setApiName('')
-  handleClose()
-}
+  const onSelect = (tabVal: any) => {
+    setSelected(tabVal)
+    callData(tabVal)
+  }
+  const callData = async (tab: any) => {
+    let response = await fetch(tab.link);
+    if (response.status === 200) {
+      let data = await response.json();
+      setCurrentPageArticle(data.articles)
+    }
+  }
+  const selectTab = () => {
+    if (tabs.length === 5 || catName === '' || apiName === '') {
+      handleClose()
+    } else {
+      setTabs((tab) => {
+        const link = apiName.replace('API_KEY', `${API_KEY}`)
+        return [...tab, { name: catName, link: link }]
+      })
+      setCatName('')
+      setApiName('')
+      handleClose()
+    }
 
-}
+  }
 
 
   return (
@@ -99,12 +99,12 @@ if(tabs.length===5 || catName==='' || apiName===''){
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <div className='modal-form'>
-            <TextField value={catName} onChange={e => setCatName(e.target.value)} id="standard-basic" label="Category Name" variant="standard"  />
+              <TextField value={catName} onChange={e => setCatName(e.target.value)} id="standard-basic" label="Category Name" variant="standard" />
 
-            <TextField value={apiName} onChange={e => setApiName(e.target.value)} id="standard-basic" label="API URL" variant="standard" />
+              <TextField value={apiName} onChange={e => setApiName(e.target.value)} id="standard-basic" label="API URL" variant="standard" />
 
-              <ColorButton variant="contained" onClick={selectTab} >        <AddIcon/>
-ADD</ColorButton>
+              <ColorButton variant="contained" onClick={selectTab} >        <AddIcon />
+                ADD</ColorButton>
 
             </div>
           </Typography>
@@ -113,34 +113,34 @@ ADD</ColorButton>
       <header className="app_header">
         <div className='heading'>News Today</div>
         <div className='app_tab'>
-      <div className='tab'>
-        {
-          tabs.map((tab,key)=>{
-            return (
-              <div className ={`tab_name ${selected.name === tab.name  ? 'selectedtab':'unselectedtab'}` }
-                onClick={(ev)=>onSelect(tab)}
-                >{tab.name} </div>
-            )
-          })
-        }
-         <button disabled={tabs.length===5} className='add_icon' onClick={handleOpen}>
-        <AddIcon/>
-      </button>
-      </div>
-     
+          <div className='tab'>
+            {
+              tabs.map((tab, key) => {
+                return (
+                  <div className={`tab_name ${selected.name === tab.name ? 'selectedtab' : 'unselectedtab'}`}
+                    onClick={(ev) => onSelect(tab)}
+                  >{tab.name} </div>
+                )
+              })
+            }
+            <button disabled={tabs.length === 5} className='add_icon' onClick={handleOpen}>
+              <AddIcon />
+            </button>
+          </div>
+
         </div>
         <div className='app_search'>
-          <div className='search_bar'> 
-          <button className='search'><SearchIcon/></button>
-          <input  type="text" placeholder='Search for Keyword,Author'  />
+          <div className='search_bar'>
+            <button className='search'><SearchIcon /></button>
+            <input type="text" placeholder='Search for Keyword,Author' />
 
           </div>
         </div>
-        </header>
+      </header>
 
-        <div className='app_body'>
-          <Article data={currentPageArticle}/>
-        </div>
+      <div className='app_body'>
+        <Article data={currentPageArticle} />
+      </div>
     </div>
   );
 }
