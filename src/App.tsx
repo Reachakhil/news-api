@@ -56,7 +56,7 @@ link:`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=${API_KEY}`
 
 useEffect(()=>{
   callData(tabs[0])
-},[])
+},[tabs])
 
 const onSelect=(tabVal:any)=>{
   setSelected(tabVal)
@@ -123,7 +123,7 @@ ADD</ColorButton>
             )
           })
         }
-         <button disabled={tabs.length==5} className='add_icon' onClick={handleOpen}>
+         <button disabled={tabs.length===5} className='add_icon' onClick={handleOpen}>
         <AddIcon/>
       </button>
       </div>
