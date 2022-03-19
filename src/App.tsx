@@ -139,7 +139,7 @@ function App() {
       </header>
 
       <div className='app_body'>
-        <Article data={currentPageArticle} />
+        <Article data={currentPageArticle}/>
       </div>
     </div>
   );
