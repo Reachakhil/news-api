@@ -1,0 +1,126 @@
+
+.app{
+  margin:0 auto;
+  width:50%;
+  height:90vh;
+  background-color: #FAFAFA;
+}
+.app_header{
+display: flex;
+flex-direction: column;
+}
+.heading{
+font-family: 'Roboto', sans-serif;
+font-size: 40px;
+color:#000000;
+word-spacing: 0;
+margin-bottom: 53px;
+} 
+.app_tab{
+  display: flex;
+  align-items: center;
+}
+.tab{
+  display: flex;
+  cursor: pointer;
+  flex-wrap: wrap;
+}
+.tab_name{
+  font-size: 14px;
+  color:#7E7E7E;
+  opacity: 100%;
+  width: auto;
+height: 19px;
+text-align: center;
+font-family: 'Roboto', sans-serif;
+letter-spacing: 0px;
+color: #7E7E7E;
+opacity: 1;
+background-color: #EAEAEA;
+border-radius: 10px;
+padding:5px;
+margin-right: 1rem;
+}
+.search_bar{
+  display: flex;
+  margin: 1rem 0
+}
+.search_bar input[type=text]{
+ 
+  font-size: 17px;
+  float: left;
+  width: 100%;
+  border:none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  font-size:1rem;
+  box-shadow: 0px 0px 16px #00000010;
+border: 1px solid #E5E5E5;
+border-left: none;
+
+}
+
+.search_bar button {
+  width: 20%;
+  font-size: 17px;
+  cursor: pointer;
+  border:none;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+font-size:1rem;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 0px 16px #00000010;
+border: 1px solid #E5E5E5;
+border-right: none;
+}
+
+
+.selectedtab{
+background-color: #00F0C2;
+}
+.modal-form{
+  display: flex;
+  flex-direction: column;
+}
+.modal-input{
+  margin-bottom: 1rem;
+  color: yellow;
+}
+
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  vertical-align: top;
+  margin-bottom: 10px !important;
+}
+.add_icon{
+  border: none;
+  cursor: pointer;
+
+}
+.add_icon:disabled{
+  cursor:not-allowed;
+}
+@media only screen and (max-width: 475px) {
+  .app{
+    width: 100%;
+  }
+  .tab_name{
+    font-size: 10px;
+  }
+.heading{
+font-size: 20px;
+}
+
+}
